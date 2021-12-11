@@ -1,0 +1,36 @@
+package edu.husc.vinfastspring.dao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import edu.husc.vinfastspring.bean.loaiBean;
+
+public class loaiDao {
+	DungChung dc = new DungChung();
+	
+	public ArrayList<loaiBean> getLoai() throws Exception{
+		dc.KetNoi();
+		ArrayList<loaiBean> ds = new ArrayList<loaiBean>();
+		String sql = "SELECT * FROM Loai";
+		PreparedStatement cmd = dc.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			String maLoai = rs.getString("maloai");
+			String tenLoai = rs.getString("tenloai");
+			
+			ds.add(new loaiBean(maLoai,tenLoai));
+		}
+		rs.close();
+		dc.cn.close();
+		return ds;
+	}
+	
+	public static void main(String[] args) throws Exception{
+		loaiDao ldao = new loaiDao();
+		ArrayList<loaiBean> list = ldao.getLoai();
+		for( loaiBean i : list) {
+			System.out.println(i.getMaloai());
+		}
+	}
+}

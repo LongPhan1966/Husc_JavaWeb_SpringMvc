@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+D:\java\ThiCuoiKy2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2296273613.index
+\vinfastspring\src\main\resources
+D:\java\ThiCuoiKy2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4267052771.index
+\vinfastspring\src\main\java

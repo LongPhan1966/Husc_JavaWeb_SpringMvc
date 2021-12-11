@@ -1,0 +1,14 @@
+package edu.husc.vinfastspring.bean;
+
+import java.util.Date;
+
+public class xeBean {
+	public String maxe;
+	public String tenxe;
+	public long soluong;
+	public long gia;
+	public String maloai;
+	public String anh;
+	public Date ngaynhap;
+	public String xuatsu;
+}

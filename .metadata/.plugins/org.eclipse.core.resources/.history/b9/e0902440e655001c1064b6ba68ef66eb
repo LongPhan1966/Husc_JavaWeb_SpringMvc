@@ -1,0 +1,67 @@
+package edu.husc.vinfastspring.dao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import edu.husc.vinfastspring.bean.khachHangBean;
+
+public class khachHangDao {
+	DungChung dc= new DungChung();
+	public khachHangBean ktdn(String un, String pass) throws Exception
+	{
+		//b1: ket noi vao csdl
+		dc.KetNoi();
+		//b2: Lay du lieu ve
+		String sql="Select * from KhachHang where tendn=? and pass=?";
+		PreparedStatement cmd= dc.cn.prepareStatement(sql);
+		//b3: Truyen tham so vao cau lenh sql
+		cmd.setString(1,un);
+		cmd.setString(2,pass);
+		//b4: Thuc hien cau lieu
+		ResultSet rs= cmd.executeQuery();
+		//kiem tra xem nguoi dung dang nhap dung hay khong
+		//neu rs.next==false return null;
+		//Nguoc lai: tao ra 01 kh, return kh
+		khachHangBean kh = null;
+		if (rs.next())
+		{
+			Long MaKH=rs.getLong("makh");
+			String HoTenKH=rs.getString("hoten");
+			String DiaChi=rs.getString("diachi");
+		    String SDT=rs.getString("sodt");
+		    String Email=rs.getString("email");
+			String TenDN=rs.getString("tendn");
+			String MatKhau=rs.getString("pass");
+			kh = new khachHangBean(MaKH, HoTenKH, DiaChi, SDT, Email, TenDN, MatKhau);
+		}
+		//b6: Dong all 
+		rs.close();
+		dc.cn.close();
+		return kh;
+	}
+	
+	public int ktdk( String hoten, String diachi, String email, String sdt, String tendn,String matkhau) throws Exception {
+		dc.KetNoi();
+		String sqlktdk = "select * form KhachHang where tendn =?";
+		PreparedStatement ktra = dc.cn.prepareStatement(sqlktdk);
+		ktra.setString(1, tendn);
+		ResultSet ktrars = ktra.executeQuery();
+		
+		if(ktrars.next() == false) {
+			String sql = "insert into KhachHang (hoten,diachi,sdt,email,tendn,pass) value(?,?,?,?,?,?)";
+			PreparedStatement cmd = dc.cn.prepareStatement(sql);
+			cmd.setString(1,hoten);
+			cmd.setString(2,diachi);
+			cmd.setString(3,email);
+			cmd.setString(4,sdt);
+			cmd.setString(5,tendn);
+			cmd.setString(6,matkhau);
+			
+			int rs= cmd.executeUpdate();
+		}
+		else return 0;
+		ktrars.close();
+		dc.cn.close();
+		return rs;
+	}
+}

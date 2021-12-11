@@ -1,0 +1,12 @@
+package edu.husc.vinfastspring.bo;
+
+import edu.husc.vinfastspring.bean.khachHangBean;
+import edu.husc.vinfastspring.dao.khachHangDao;
+
+public class khachHangBo {
+	khachHangDao khdao = new khachHangDao();
+	
+	public khachHangBean ktdn(String un, String pass) throws Exception{
+		return khdao.ktdn(un, pass);
+	}
+}

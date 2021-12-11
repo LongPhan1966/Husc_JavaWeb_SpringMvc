@@ -1,0 +1,5 @@
+package edu.husc.vinfastspring.dao;
+
+public class loaiDao {
+
+}

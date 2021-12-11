@@ -1,0 +1,6 @@
+package edu.husc.vinfastspring.bo;
+
+public class loaiBo {
+	loaiBo lbo = new loaiBo();
+	
+}

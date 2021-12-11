@@ -1,0 +1,14 @@
+package edu.husc.vinfastspring.bo;
+
+import java.util.ArrayList;
+
+import edu.husc.vinfastspring.bean.xeBean;
+import edu.husc.vinfastspring.dao.xeDao;
+
+public class xeBo {
+	xeDao xdao = new xeDao();
+	
+	public ArrayList<xeBean> getXe() throws Exception{
+		return xdao.getXe();
+	}
+}

@@ -1,0 +1,57 @@
+package edu.husc.vinfastspring.dao;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import edu.husc.vinfastspring.bean.xeBean;
+
+public class xeDao {
+	DungChung dc = new DungChung();
+	
+	public ArrayList<xeBean> getXe() throws Exception{
+		dc.KetNoi();
+		ArrayList<xeBean> ds = new ArrayList<xeBean>();
+		String sql = "SELECT * FROM XE";
+		PreparedStatement cmd = dc.cn.prepareStatement(sql);
+		ResultSet rs = cmd.executeQuery();
+		while(rs.next()) {
+			String tenXe = rs.getString("tenxe");
+			Long gia = rs.getLong("gia");
+			String maLoai = rs.getString("maloai");
+			String anh = rs.getString("anh");
+			String xuatsu = rs.getString("xuatsu");
+			
+			ds.add(new xeBean(tenXe,gia,maLoai,anh, xuatsu));
+		}
+		rs.close();
+		dc.cn.close();
+		return ds;
+	}
+	
+	public int insertXe(String maXe, String tenXe, Long soLuong, Long gia, String maLoai,String anh, Date ngayNhap, String xuatSu) throws Exception{
+		
+		dc.KetNoi();
+		String sql = "INSERT into dbo.Xe (maxe, tenxe, soluong, gia, maloai, anh, NgayNhap, xuatsu) VALUES(?,?,?,?,?,?,?,?)";
+		PreparedStatement cmd = dc.cn.prepareStatement(sql);
+		
+		cmd.setString(1, maXe);
+		cmd.setString(2, tenXe);
+		cmd.setLong(3, soLuong);
+		cmd.setLong(4, gia);
+		cmd.setString(5, maLoai);
+		cmd.setString(6, anh);
+		cmd.setDate(8, new Date(ngayNhap.getTime()));
+		cmd.setString(9, xuatSu);
+		cmd.executeUpdate();
+		dc.cn.close();
+		return 1;
+	}
+	
+	public static void main(String[] args) throws Exception{
+		xeDao xdao = new xeDao();
+		String list = xdao.insertXe("abc", "ABC", 10, 40000, "phothong", null, "10-10-2021", "Viet Nam");
+		
+	}
+}

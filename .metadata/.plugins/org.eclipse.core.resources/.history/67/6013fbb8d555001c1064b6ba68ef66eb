@@ -1,0 +1,5 @@
+package edu.husc.vinfastspring.config;
+
+public class SpringWebAppInitializer {
+
+}

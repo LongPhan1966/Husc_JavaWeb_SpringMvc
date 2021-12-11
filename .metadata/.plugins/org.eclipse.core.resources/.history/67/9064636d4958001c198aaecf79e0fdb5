@@ -1,0 +1,55 @@
+package edu.husc.vinfastspring.bean;
+
+import java.sql.Date;
+
+public class hoaDonBean {
+	private String maxe;
+	private String tenxe;
+	private Long gia;
+	private Long soluong;
+	private Long thanhtien;
+	public hoaDonBean() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public hoaDonBean(String maxe, String tenxe, Long gia, Long soluong, Long thanhtien) {
+		super();
+		this.maxe = maxe;
+		this.tenxe = tenxe;
+		this.gia = gia;
+		this.soluong = soluong;
+		this.thanhtien = thanhtien;
+	}
+	public String getMaxe() {
+		return maxe;
+	}
+	public void setMaxe(String maxe) {
+		this.maxe = maxe;
+	}
+	public String getTenxe() {
+		return tenxe;
+	}
+	public void setTenxe(String tenxe) {
+		this.tenxe = tenxe;
+	}
+	public Long getGia() {
+		return gia;
+	}
+	public void setGia(Long gia) {
+		this.gia = gia;
+	}
+	public Long getSoluong() {
+		return soluong;
+	}
+	public void setSoluong(Long soluong) {
+		this.soluong = soluong;
+	}
+	public Long getThanhtien() {
+		return thanhtien;
+	}
+	public void setThanhtien(Long thanhtien) {
+		this.thanhtien = thanhtien;
+	}
+	
+	
+}

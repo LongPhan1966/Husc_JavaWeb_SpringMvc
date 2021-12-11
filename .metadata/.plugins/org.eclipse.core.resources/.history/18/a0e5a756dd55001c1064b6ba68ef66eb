@@ -1,0 +1,5 @@
+package edu.husc.vinfastspring.controller;
+
+public class DangNhapController {
+
+}
